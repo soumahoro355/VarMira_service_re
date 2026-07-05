@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/soumahoro355/VarMira_service_re#readme",
   "dependencies": {
+    "cloudinary": "^2.10.0",
+    "dotenv": "^17.4.2",
     "express": "^5.2.1"
   }
 }
