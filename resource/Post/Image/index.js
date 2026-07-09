@@ -1,13 +1,14 @@
 const router = require("express").Router();
 
-const supprimer = require("./cloudinary/src/supp_img");
+const supprimerImage =
+require("./cloudinary/src/supp_img");
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", async (req, res) => {
 
-supprimer(req.params.id);
+    await supprimerImage(req.params.id);
 
     res.json({
-        message: "Image supprimée"
+        success: true
     });
 
 });

@@ -1,11 +1,7 @@
-function supprimer_image_cloud(id) {
+async function supprimerImage(id) {
 
-    if (!id) {
-        throw new Error("ID image manquant");
-    }
-
-    console.log("Suppression image :", id);
+    console.log("Suppression :", id);
 
 }
 
-module.exports = supprimer_image_cloud;
+module.exports = supprimerImage;
