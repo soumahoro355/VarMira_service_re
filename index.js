@@ -8,20 +8,20 @@ app.use(cors({
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 }));
 
-app.options("*", cors());
-
 app.use(express.json());
 
 console.log("SERVER STARTED");
 
-app.use("/publication", require("./resource/Post"));
-app.get("/", (req,res)=>{
+app.get("/", (req, res) => {
     console.log("ROOT OK");
 
     res.json({
-        message:"API fonctionne"
+        message: "API fonctionne"
     });
 });
+
+app.use("/publication", require("./resource/Post"));
+
 app.listen(3000, () => {
     console.log("Serveur lancé");
 });
