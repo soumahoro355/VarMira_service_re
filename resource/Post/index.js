@@ -2,7 +2,7 @@ const router = require("express").Router();
 
 router.use(
     "/image",
-    require("./image")
+    require("./Image")
 );
 
 module.exports = router;
