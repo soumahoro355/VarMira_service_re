@@ -22,6 +22,8 @@ app.get("/", (req, res) => {
 
 app.use("/publication", require("./resource/Post"));
 
-app.listen(3000, () => {
-    console.log("Serveur lancé");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Serveur lancé sur le port ${PORT}`);
 });
