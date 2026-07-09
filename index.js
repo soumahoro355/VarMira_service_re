@@ -5,7 +5,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
+console.log("ok 1");
 app.use("/publication", require("./resource/Post"));
 
 app.listen(3000, () => {
