@@ -1,17 +1,22 @@
 const router = require("express").Router();
-console.log("ok 4");
-const supprimerImage =
-require("./cloudinary/src/supp_img");
-console.log("ok 5");
+const supprimerImage = require("./cloudinary/src/supp_img");
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id(*)", async (req, res) => {
+    try {
+        const publicId = decodeURIComponent(req.params.id);
+        await supprimerImage(publicId);
 
-    await supprimerImage(req.params.id);
-
-    res.json({
-        success: true
-    });
-
+        res.json({
+            success: true
+        });
+    } catch (error) {
+        console.error("Erreur lors de la suppression de l'image :", error);
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+    }
 });
+
 console.log("IMAGE MODULE LOADED");
 module.exports = router;
