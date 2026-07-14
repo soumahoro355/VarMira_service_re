@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const supprimerImage = require("./cloudinary/src/supp_img");
 
-router.delete("*", async (req, res) => {
+router.delete(/.*/, async (req, res) => {
     try {
-        const rawId = req.params[0] || req.path || "";
+        const rawId = req.path || "";
         const publicId = decodeURIComponent(rawId.replace(/^\/+/, ""));
 
         if (!publicId) {
