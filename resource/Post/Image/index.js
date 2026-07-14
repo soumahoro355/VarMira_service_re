@@ -1,9 +1,18 @@
 const router = require("express").Router();
 const supprimerImage = require("./cloudinary/src/supp_img");
 
-router.delete("/:id(*)", async (req, res) => {
+router.delete("*", async (req, res) => {
     try {
-        const publicId = decodeURIComponent(req.params.id);
+        const rawId = req.params[0] || req.path || "";
+        const publicId = decodeURIComponent(rawId.replace(/^\/+/, ""));
+
+        if (!publicId) {
+            return res.status(400).json({
+                success: false,
+                error: "Missing Cloudinary public ID."
+            });
+        }
+
         await supprimerImage(publicId);
 
         res.json({
